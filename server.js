@@ -1,9 +1,12 @@
 import {
   ApolloServer
 } from 'apollo-server';
+import mongoose from 'mongoose';
+
 import typeDefs from './typeDefs';
 import resolvers from './resolvers';
-import mongoose from 'mongoose';
+
+import { findOrCreateUser } from './controllers/userController';
 
 require('dotenv').config();
 
@@ -15,7 +18,20 @@ mongoose.connect(process.env.MONGO_URI, {
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  context: async ({ req }) => {
+    let authToken = null;
+    let currentUser = null;
+    try {
+      authToken = req.headers.authorization;
+      if (authToken) {
+         currentUser = await findOrCreateUser(authToken);
+      }
+    } catch (err) {
+      console.error(`Unable to authenticate user with token ${authToken}`);
+    }
+    return { currentUser };
+  }
 });
 
 server.listen().then(({
