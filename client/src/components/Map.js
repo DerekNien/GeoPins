@@ -9,8 +9,8 @@ import PinIcon from './PinIcon';
 import Context from '../context';
 
 const INITIAL_VIEWPORT = {
-  latitude: 37.7577,
-  longitude: -122.4376,
+  latitude: 25.033493,
+  longitude: 121.564101,
   zoom: 13
 }
 
@@ -52,7 +52,7 @@ const Map = ({ classes }) => {
         height="calc(100vh - 64px)"
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxApiAccessToken="pk.eyJ1IjoiYWVnaXM2MDkxOCIsImEiOiJjanU1a24zanQxYTJtM3lvNzN6bW92dmlzIn0.fPIxrwgSFLMG2K9pyoZ7ng"
-        onViewStateChange={newViewport => setViewport(newViewport)}
+        onViewStateChange={newViewport => setViewport(newViewport.viewState)}
         onClick={handleMapClick}
         {...viewport}
       >
