@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import App from "./pages/App";
 import Splash from "./pages/Splash";
-import ProtectedRoute from './ProtectedRoute';
+import ProtectedRoute from "./ProtectedRoute";
 import Context from "./context";
 import reducer from "./reducer";
 

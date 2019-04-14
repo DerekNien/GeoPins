@@ -8,7 +8,7 @@ import LandscapeIcon from "@material-ui/icons/LandscapeOutlined";
 import ClearIcon from "@material-ui/icons/Clear";
 import SaveIcon from "@material-ui/icons/SaveTwoTone";
 
-import Context from '../../context';
+import Context from "../../context";
 
 const CreatePin = ({ classes }) => {
   const { dispatch } = useContext(Context);
@@ -60,7 +60,7 @@ const CreatePin = ({ classes }) => {
             size="small"
             className={classes.button}
           >
-            <AddAPhotoIcon  />
+            <AddAPhotoIcon />
           </Button>
         </label>
       </div>

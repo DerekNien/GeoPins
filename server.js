@@ -1,19 +1,18 @@
-import {
-  ApolloServer
-} from 'apollo-server';
-import mongoose from 'mongoose';
+import { ApolloServer } from "apollo-server";
+import mongoose from "mongoose";
 
-import typeDefs from './typeDefs';
-import resolvers from './resolvers';
+import typeDefs from "./typeDefs";
+import resolvers from "./resolvers";
 
-import { findOrCreateUser } from './controllers/userController';
+import { findOrCreateUser } from "./controllers/userController";
 
-require('dotenv').config();
+require("dotenv").config();
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true
   })
-  .then(() => console.log('DB connected'))
+  .then(() => console.log("DB connected"))
   .catch(err => console.error(err));
 
 const server = new ApolloServer({
@@ -25,7 +24,7 @@ const server = new ApolloServer({
     try {
       authToken = req.headers.authorization;
       if (authToken) {
-         currentUser = await findOrCreateUser(authToken);
+        currentUser = await findOrCreateUser(authToken);
       }
     } catch (err) {
       console.error(`Unable to authenticate user with token ${authToken}`);
@@ -34,8 +33,6 @@ const server = new ApolloServer({
   }
 });
 
-server.listen().then(({
-  url
-}) => {
+server.listen().then(({ url }) => {
   console.log(`server listening on ${url}`);
 });

@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import { Paper } from "@material-ui/core";
 
-import Context from '../context';
-import NoContent from './Pin/NoContent';
-import CreatePin from './Pin/CreatePin';
+import Context from "../context";
+import NoContent from "./Pin/NoContent";
+import CreatePin from "./Pin/CreatePin";
 
 const Blog = ({ classes }) => {
   const { state } = useContext(Context);
