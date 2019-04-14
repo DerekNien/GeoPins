@@ -10,12 +10,13 @@ export default gql`
 
   type Pin {
     _id: ID
+    createdAt: String
     title: String
     content: String
     image: String
     latitude: Float
     longitude: Float
-    auther: User
+    author: User
     comments: [Comment]
   }
 
@@ -25,7 +26,19 @@ export default gql`
     auther: User
   }
 
+  input CreatePinInput {
+    title: String
+    image: String
+    content: String
+    latitude: Float
+    longitude: Float
+  }
+
   type Query {
     me: User
+  }
+
+  type Mutation {
+    createPin(input: CreatePinInput!): Pin
   }
 `;
