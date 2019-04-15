@@ -23,7 +23,7 @@ export default gql`
   type Comment {
     text: String
     createdAt: String
-    auther: User
+    author: User
   }
 
   input CreatePinInput {
@@ -36,6 +36,7 @@ export default gql`
 
   type Query {
     me: User
+    getPins: [Pin!]
   }
 
   type Mutation {
