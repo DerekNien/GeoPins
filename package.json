@@ -5,9 +5,11 @@
   "main": "server.js",
   "scripts": {
     "babel-node": "babel-node --presets=env",
+    "babel-build": "babel . --ignore node_modules,client --out-dir build",
     "dev": "nodemon --ignore client/ --exec npm run babel-node -- ./server.js",
-    "build": "babel src -d dist",
-    "start": "babel-node server.js"
+    "build": "npm run clean && npm run babel-build",
+    "start": "npm run build && node ./build/server.js",
+    "clean": "rm -rf build && mkdir build"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
     "nodemon": "^1.18.10"
   },
@@ -30,7 +33,8 @@
       "env"
     ],
     "plugins": [
-      "transform-object-rest-spread"
+      "transform-object-rest-spread",
+      "transform-runtime"
     ]
   }
 }
