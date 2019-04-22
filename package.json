@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "babel-node": "babel-node --presets=env",
-    "babel-build": "babel . --ignore node_modules,client --out-dir build",
+    "babel-build": "./node_modules/.bin/babel . --ignore node_modules,client --out-dir build",
     "dev": "nodemon --ignore client/ --exec npm run babel-node -- ./server.js",
     "build": "npm run clean && npm run babel-build",
     "start": "npm run build && node ./build/server.js",
